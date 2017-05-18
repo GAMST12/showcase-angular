@@ -5,6 +5,20 @@ public class Category {
     private String name;
     private MainCategory mainCategory;
 
+    public Category(long id, String name, MainCategory mainCategory) {
+        this.id = id;
+        this.name = name;
+        this.mainCategory = mainCategory;
+    }
+
+    public Category(String name, MainCategory mainCategory) {
+        this.name = name;
+        this.mainCategory = mainCategory;
+    }
+
+    public Category() {
+    }
+
     public long getId() {
         return id;
     }

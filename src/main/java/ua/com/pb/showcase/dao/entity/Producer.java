@@ -4,6 +4,17 @@ public class Producer {
     private long id;
     private String name;
 
+    public Producer() {}
+
+    public Producer(long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public Producer(String name) {
+        this.name = name;
+    }
+
     public long getId() {
         return id;
     }

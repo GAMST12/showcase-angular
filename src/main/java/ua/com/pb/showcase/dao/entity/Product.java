@@ -12,6 +12,28 @@ public class Product {
     private BigDecimal price;
     private boolean available;
 
+    public Product()
+    {    }
+
+    public Product(String name, Producer producer, Category category, String description, BigDecimal price, boolean available) {
+        this.name = name;
+        this.producer = producer;
+        this.category = category;
+        this.description = description;
+        this.price = price;
+        this.available = available;
+    }
+
+    public Product(long id, String name, Producer producer, Category category, String description, BigDecimal price, boolean available) {
+        this.id = id;
+        this.name = name;
+        this.producer = producer;
+        this.category = category;
+        this.description = description;
+        this.price = price;
+        this.available = available;
+    }
+
     public long getId() {
         return id;
     }

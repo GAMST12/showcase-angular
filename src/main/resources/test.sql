@@ -63,5 +63,7 @@ select	'Electrolux';
 
 
 insert into Product (prd_name, prd_producer_id, prd_category_id, prd_description, prd_price, prd_fl_availability)
-select 'Холодильник Samsung A100', 3, 1, 'Высота 2.05. Объем камеры - 190л, морозильной камеры - 90л', 15000.00, 1
+select 'Холодильник Samsung A100', 3, 1, 'Высота 2.05. Объем камеры - 190л, морозильной камеры - 90л', 15000.00, 1;
+insert into Product (prd_name, prd_producer_id, prd_category_id, prd_description, prd_price, prd_fl_availability)
+select 'Телевизор Sony C40', 2, 6, 'Диагональ - 40 дюймов, 3D, FullHD', 20000.00, 1;
 

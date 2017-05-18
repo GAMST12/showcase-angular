@@ -4,6 +4,17 @@ public class MainCategory {
     private long id;
     private String name;
 
+    public MainCategory(long id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public MainCategory(String name) {
+        this.name = name;
+    }
+
+    public MainCategory() {}
+
     public long getId() {
         return id;
     }
