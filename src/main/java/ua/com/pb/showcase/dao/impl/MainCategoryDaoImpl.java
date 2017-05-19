@@ -41,7 +41,7 @@ public class MainCategoryDaoImpl implements MainCategoryDao {
 
     @Override
     public MainCategory findById(long id) {
-        String sql = "select mnc_mcategory_id, mnc_mcategory " +
+        String sql = "select mnc_mcategory_id, mnc_mcategory from Main_category " +
                 "where mnc_mcategory_id = ?";
         MainCategory mainCategory = new MainCategory();
         try (Connection conn = dataSource.getConnection();
@@ -66,17 +66,17 @@ public class MainCategoryDaoImpl implements MainCategoryDao {
     }
 
     @Override
-    public long create(MainCategory product) {
+    public long create(MainCategory mainCategory) {
         return 0;
     }
 
     @Override
-    public int update(MainCategory product) {
+    public int update(MainCategory mainCategory) {
         return 0;
     }
 
     @Override
-    public int delete(long productId) {
+    public int delete(long mainCategoryId) {
         return 0;
     }
 }

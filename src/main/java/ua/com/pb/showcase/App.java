@@ -1,6 +1,7 @@
 package ua.com.pb.showcase;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+import ua.com.pb.showcase.dao.ProducerDao;
 import ua.com.pb.showcase.dao.ProductDao;
 import ua.com.pb.showcase.dao.entity.Category;
 import ua.com.pb.showcase.dao.entity.MainCategory;
@@ -56,6 +57,8 @@ public class App {
 
 */
         ProductDao productDao = context.getBean(ProductDao.class);
+        ProducerDao producerDao = context.getBean(ProducerDao.class);
+
         System.out.println(productDao.findAll());
 
         System.out.println(productDao.findById(2));
@@ -79,6 +82,8 @@ public class App {
 
         System.out.println(productDao.delete(productId));
         System.out.println(productDao.findAll());
+
+        System.out.println(producerDao.findAll());
 
         context.stop();
     }
