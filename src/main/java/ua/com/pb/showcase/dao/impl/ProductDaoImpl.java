@@ -25,7 +25,7 @@ public class ProductDaoImpl implements ProductDao {
                 "and prd_producer_id = pdc_producer_id " +
                 "and ctg_mcategory_id = mnc_mcategory_id ";
 
-        List<Product> productList = new ArrayList<>();
+        List<Product> products = new ArrayList<>();
         try (Connection conn = dataSource.getConnection();
              Statement st = conn.createStatement();){
             try (ResultSet rs = st.executeQuery(sql);){
@@ -38,7 +38,7 @@ public class ProductDaoImpl implements ProductDao {
                     product.setId(rs.getLong("prd_product_id"));
                     product.setName(rs.getString("prd_name"));
                     producer.setId(rs.getLong("pdc_producer_id"));
-                    producer.setProducer(rs.getString("pdc_producer"));
+                    producer.setName(rs.getString("pdc_producer"));
                     product.setProducer(producer);
                     mainCategory.setId(rs.getLong("mnc_mcategory_id"));
                     mainCategory.setName(rs.getString("mnc_mcategory"));
@@ -49,13 +49,13 @@ public class ProductDaoImpl implements ProductDao {
                     product.setDescription(rs.getString("prd_description"));
                     product.setPrice(rs.getBigDecimal("prd_price"));
                     product.setAvailable(rs.getBoolean("prd_fl_availability"));
-                    productList.add(product);
+                    products.add(product);
                 }
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        return productList;
+        return products;
     }
 
     @Override
@@ -80,7 +80,7 @@ public class ProductDaoImpl implements ProductDao {
                     product.setId(rs.getLong("prd_product_id"));
                     product.setName(rs.getString("prd_name"));
                     producer.setId(rs.getLong("pdc_producer_id"));
-                    producer.setProducer(rs.getString("pdc_producer"));
+                    producer.setName(rs.getString("pdc_producer"));
                     product.setProducer(producer);
                     mainCategory.setId(rs.getLong("mnc_mcategory_id"));
                     mainCategory.setName(rs.getString("mnc_mcategory"));
@@ -121,7 +121,7 @@ public class ProductDaoImpl implements ProductDao {
                     product.setId(rs.getLong("prd_product_id"));
                     product.setName(rs.getString("prd_name"));
                     producer.setId(rs.getLong("pdc_producer_id"));
-                    producer.setProducer(rs.getString("pdc_producer"));
+                    producer.setName(rs.getString("pdc_producer"));
                     product.setProducer(producer);
                     mainCategory.setId(rs.getLong("mnc_mcategory_id"));
                     mainCategory.setName(rs.getString("mnc_mcategory"));
@@ -164,7 +164,7 @@ public class ProductDaoImpl implements ProductDao {
                     product.setId(rs.getLong("prd_product_id"));
                     product.setName(rs.getString("prd_name"));
                     producer.setId(rs.getLong("pdc_producer_id"));
-                    producer.setProducer(rs.getString("pdc_producer"));
+                    producer.setName(rs.getString("pdc_producer"));
                     product.setProducer(producer);
                     mainCategory.setId(rs.getLong("mnc_mcategory_id"));
                     mainCategory.setName(rs.getString("mnc_mcategory"));
@@ -208,7 +208,7 @@ public class ProductDaoImpl implements ProductDao {
                     product.setId(rs.getLong("prd_product_id"));
                     product.setName(rs.getString("prd_name"));
                     producer.setId(rs.getLong("pdc_producer_id"));
-                    producer.setProducer(rs.getString("pdc_producer"));
+                    producer.setName(rs.getString("pdc_producer"));
                     product.setProducer(producer);
                     mainCategory.setId(rs.getLong("mnc_mcategory_id"));
                     mainCategory.setName(rs.getString("mnc_mcategory"));
@@ -252,7 +252,7 @@ public class ProductDaoImpl implements ProductDao {
                     product.setId(rs.getLong("prd_product_id"));
                     product.setName(rs.getString("prd_name"));
                     producer.setId(rs.getLong("pdc_producer_id"));
-                    producer.setProducer(rs.getString("pdc_producer"));
+                    producer.setName(rs.getString("pdc_producer"));
                     product.setProducer(producer);
                     mainCategory.setId(rs.getLong("mnc_mcategory_id"));
                     mainCategory.setName(rs.getString("mnc_mcategory"));
@@ -282,7 +282,7 @@ public class ProductDaoImpl implements ProductDao {
              PreparedStatement pst = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);){
             pst.setString(1, product.getName());
             pst.setLong(2, product.getProducer().getId());
-            pst.setLong(3, product.getProducer().getId());
+            pst.setLong(3, product.getCategory().getId());
             pst.setString(4, product.getDescription());
             pst.setBigDecimal(5, product.getPrice());
             pst.setBoolean(6, product.isAvailable());
@@ -308,7 +308,7 @@ public class ProductDaoImpl implements ProductDao {
                 ", prd_description = ? " +
                 ", prd_price = ? " +
                 ", prd_fl_availability = ? " +
-                "where prd_product_id= ? ";
+                "where prd_product_id = ? ";
 
         int res = 0;
 

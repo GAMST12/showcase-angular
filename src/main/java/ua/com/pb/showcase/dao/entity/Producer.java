@@ -15,6 +15,7 @@ public class Producer {
         this.name = name;
     }
 
+
     public long getId() {
         return id;
     }
@@ -23,11 +24,11 @@ public class Producer {
         this.id = id;
     }
 
-    public String getProducer() {
+    public String getName() {
         return name;
     }
 
-    public void setProducer(String name) {
+    public void setName(String name) {
         this.name = name;
     }
 

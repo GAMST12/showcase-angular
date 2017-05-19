@@ -27,6 +27,12 @@
        </bean>
 
        <bean id="productDao" class="ua.com.pb.showcase.dao.impl.ProductDaoImpl" scope="singleton"/>
+       <bean id="producerDao" class="ua.com.pb.showcase.dao.impl.JdbcProducerDaoImpl" scope="singleton">
+              <property name="dataSource" ref="dataSource"/>
+       </bean>
+       <bean id="mainCategoryDao" class="ua.com.pb.showcase.dao.impl.JdbcMainCategoryDaoImpl" scope="singleton">
+              <property name="dataSource" ref="dataSource"/>
+       </bean>
 
        <mvc:resources mapping="/resources/**" location="/resources/" />
 
