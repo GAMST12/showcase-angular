@@ -6,26 +6,46 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ProductFilter {
-    private List<Long> categoriesId;
-    private List<Long> producerId;
     private BigDecimal priceFrom = BigDecimal.valueOf(0.0);
     private BigDecimal priceTo = BigDecimal.valueOf(Double.MAX_VALUE);
-    private List<Boolean> onlyAvailable = Arrays.asList(Boolean.FALSE, Boolean.TRUE);
 
-    public List<Long> getCategoriesId() {
+    public BigDecimal getPriceFrom() {
+        return priceFrom;
+    }
+
+    public void setPriceFrom(BigDecimal priceFrom) {
+        this.priceFrom = priceFrom;
+    }
+
+    public BigDecimal getPriceTo() {
+        return priceTo;
+    }
+
+    public void setPriceTo(BigDecimal priceTo) {
+        this.priceTo = priceTo;
+    }
+
+/*
+    private List<String> categoriesId;
+    private List<String> producersId;
+    private BigDecimal priceFrom = BigDecimal.valueOf(0.0);
+    private BigDecimal priceTo = BigDecimal.valueOf(Double.MAX_VALUE);
+    private List<Boolean> availabilities = Arrays.asList(Boolean.FALSE, Boolean.TRUE);
+
+    public List<String> getCategoriesId() {
         return categoriesId;
     }
 
-    public void setCategoriesId(List<Long> categoriesId) {
+    public void setCategoriesId(List<String> categoriesId) {
         this.categoriesId = categoriesId;
     }
 
-    public List<Long> getProducerId() {
-        return producerId;
+    public List<String> getProducersId() {
+        return producersId;
     }
 
-    public void setProducerId(List<Long> producerId) {
-        this.producerId = producerId;
+    public void setProducersId(List<String> producersId) {
+        this.producersId = producersId;
     }
 
     public BigDecimal getPriceFrom() {
@@ -44,11 +64,12 @@ public class ProductFilter {
         this.priceTo = priceTo;
     }
 
-    public List<Boolean> getOnlyAvailable() {
-        return onlyAvailable;
+    public List<Boolean> getAvailabilities() {
+        return availabilities;
     }
 
-    public void setOnlyAvailable(List<Boolean> onlyAvailable) {
-        this.onlyAvailable = onlyAvailable;
+    public void setAvailabilities(List<Boolean> availabilities) {
+        this.availabilities = availabilities;
     }
+*/
 }

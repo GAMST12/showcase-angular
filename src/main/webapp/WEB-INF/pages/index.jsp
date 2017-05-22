@@ -13,13 +13,6 @@
   <jsp:useBean id="producer" scope="request" type="java.util.List<ua.com.pb.showcase.dao.entity.Producer>"/>
 
 
-<%--
-  <jsp:useBean id="category" scope="request" type="java.util.List<ua.com.pb.showcase.dao.entity.Category>"/>
-  <jsp:useBean id="main-category" scope="request" type="java.util.List<ua.com.pb.showcase.dao.entity.MainCategory>"/>
-  <jsp:useBean id="producer" scope="request" type="java.util.List<ua.com.pb.showcase.dao.entity.Producer>"/>
---%>
-
-
 
 </head>
 <body>
@@ -28,26 +21,45 @@
     <div class="row-fluid">
       <div class="sidebar">
         <!--Sidebar content-->
-        <p>Hello from sidebar</p>
-        <select class="categories">
-          <option class="default">Select category</option>
-          <c:forEach items="${category}" var="category">
-            <option class="${category.id}">${category.name}</option>
-          </c:forEach>
-        </select>
-        <p></p>
-        <select class="producers">
-          <option class="default">Select producer</option>
-          <c:forEach items="${producer}" var="producer">
-            <option class="${producer.id}">${producer.name}</option>
-          </c:forEach>
-        </select>
+        <form id="filter-form" class="form-vertical">
+          <div class="form-group">
+            <div class="col-xs-9">
+              <select id="select-category" class="categories form-control">
+                <option id="all">Select category</option>
+                <c:forEach items="${category}" var="category">
+                  <option id="${category.id}" class="category">${category.name}</option>
+                </c:forEach>
+              </select>
+            </div>
 
+            <div class="col-xs-9">
+              <select id="select-producer" class="producers form-control">
+                <option id="all">Select producer</option>
+                <c:forEach items="${producer}" var="producer">
+                  <option id="${producer.id}" class="producer">${producer.name}</option>
+                </c:forEach>
+              </select>
+            </div>
+
+            <div class="col-xs-9">
+              <input type="number" class="form-control" id="price-from" name="price-from" placeholder="Price from" pattern="[0-9\/]*"  step="1.0"/>
+            </div>
+            <div class="col-xs-9">
+              <input type="number" class="form-control" id="price-to" name="price-to" placeholder="Price to" pattern="[0-9\/]*"  step="1.0"/>
+            </div>
+
+            <div class="col-xs-9">
+              <input type="checkbox" id="only-available">
+              <label for="only-available">Only available</label>
+            </div>
+
+          </div>
+        </form>
 
       </div>
+
       <div class="body">
         <!--Body content-->
-        <p>Hello from body</p>
         <table class="table table-hover">
           <thead>
           <tr>

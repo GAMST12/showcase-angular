@@ -244,13 +244,14 @@ public class ProductDaoImpl implements ProductDao {
                 "and available in (?)";
 
         List<Product> products = new ArrayList<>();
+/*
         try (Connection conn = dataSource.getConnection();
              PreparedStatement pst = conn.prepareStatement(sql);){
             pst.setArray(1, (Array) productFilter.getCategoriesId());
-            pst.setArray(2, (Array) productFilter.getProducerId());
+            pst.setArray(2, (Array) productFilter.getProducersId());
             pst.setBigDecimal(3, productFilter.getPriceFrom());
             pst.setBigDecimal(4, productFilter.getPriceTo());
-            pst.setArray(5, (Array) productFilter.getOnlyAvailable());
+            pst.setArray(5, (Array) productFilter.getAvailabilities());
             try (ResultSet rs = pst.executeQuery();){
                 while (rs.next()) {
                     Product product = new Product();
@@ -278,6 +279,7 @@ public class ProductDaoImpl implements ProductDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+*/
         return products;
 
     }

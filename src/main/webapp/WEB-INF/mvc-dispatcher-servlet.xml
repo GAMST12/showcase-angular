@@ -37,6 +37,9 @@
               <property name="dataSource" ref="dataSource"/>
        </bean>
 
+       <bean id="showcaseService" class="ua.com.pb.showcase.service.impl.ShowcaseServiceImpl" scope="singleton"/>
+
+
 
        <mvc:resources mapping="/resources/**" location="/resources/" />
 
