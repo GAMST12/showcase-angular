@@ -1,6 +1,7 @@
 package ua.com.pb.showcase.dao;
 
 
+import org.springframework.stereotype.Component;
 import ua.com.pb.showcase.dao.entity.MainCategory;
 
 import java.util.List;

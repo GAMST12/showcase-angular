@@ -8,6 +8,7 @@ insert into User (usr_login, usr_role, usr_email, usr_password, usr_login_dte)
 select	'admin', 'A', 'admin@pbank.com.ua', 'admin', '2017-01-01';
 
 
+/*
 insert into Main_Category (mnc_mcategory)
 select	'Крупная бытовая техника';
 insert into Main_Category (mnc_mcategory)
@@ -66,4 +67,67 @@ insert into Product (prd_name, prd_producer_id, prd_category_id, prd_description
 select 'Холодильник Samsung A100', 3, 1, 'Высота 2.05. Объем камеры - 190л, морозильной камеры - 90л', 15000.00, 1;
 insert into Product (prd_name, prd_producer_id, prd_category_id, prd_description, prd_price, prd_fl_availability)
 select 'Телевизор Sony C40', 2, 6, 'Диагональ - 40 дюймов, 3D, FullHD', 20000.00, 1;
+*/
 
+insert into Main_Category (mnc_mcategory)
+select	'Large home appliances';
+insert into Main_Category (mnc_mcategory)
+select	'Small household appliances';
+insert into Main_Category (mnc_mcategory)
+select	'TVs and Home cinema';
+insert into Main_Category (mnc_mcategory)
+select	'Telephones';
+insert into Main_Category (mnc_mcategory)
+select	'Computers and Accessories';
+insert into Main_Category (mnc_mcategory)
+select	'Accessories';
+
+
+
+
+
+insert into Category (ctg_category, ctg_mcategory_id)
+select	'Refrigerators', 1;
+insert into Category (ctg_category, ctg_mcategory_id)
+select	'Washing machines', 1;
+insert into Category (ctg_category, ctg_mcategory_id)
+select	'Water heaters', 1;
+insert into Category (ctg_category, ctg_mcategory_id)
+select	'Vacuum cleaners', 2;
+insert into Category (ctg_category, ctg_mcategory_id)
+select	'Electric kettles', 2;
+insert into Category (ctg_category, ctg_mcategory_id)
+select	'TVs', 3;
+insert into Category (ctg_category, ctg_mcategory_id)
+select	'Home cinema', 3;
+insert into Category (ctg_category, ctg_mcategory_id)
+select	'Smartphones', 4;
+insert into Category (ctg_category, ctg_mcategory_id)
+select	'Telephones', 4;
+insert into Category (ctg_category, ctg_mcategory_id)
+select	'Notebooks', 5;
+insert into Category (ctg_category, ctg_mcategory_id)
+select	'PCs', 5;
+insert into Category (ctg_category, ctg_mcategory_id)
+select	'Headphones', 6;
+insert into Category (ctg_category, ctg_mcategory_id)
+select	'USB-storage devices', 5;
+
+insert into Producer (pdc_producer)
+select	'LG';
+insert into Producer (pdc_producer)
+select	'Sony';
+insert into Producer (pdc_producer)
+select	'Samsung';
+insert into Producer (pdc_producer)
+select	'Electrolux';
+
+
+insert into Product (prd_name, prd_producer_id, prd_category_id, prd_description, prd_price, prd_fl_availability)
+select 'Refrigerator Samsung A100', 3, 1, 'Height 2.05. V - 190l/90l', 15000.00, 1;
+insert into Product (prd_name, prd_producer_id, prd_category_id, prd_description, prd_price, prd_fl_availability)
+select 'TV Sony C40', 2, 6, '40, 3D, FullHD', 20000.00, 1;
+insert into Product (prd_name, prd_producer_id, prd_category_id, prd_description, prd_price, prd_fl_availability)
+select 'TV Samsung C32', 3, 6, '32, 3D, FullHD', 12000.00, 1;
+insert into Product (prd_name, prd_producer_id, prd_category_id, prd_description, prd_price, prd_fl_availability)
+select 'Home Cinema Samsung ABC', 3, 6, '54, 3D, FullHD', 120000.00, 1;

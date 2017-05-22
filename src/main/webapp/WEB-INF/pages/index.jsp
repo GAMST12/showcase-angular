@@ -1,6 +1,7 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" pageEncoding="UTF-8"%>
 <html>
 <head>
+  <meta charset="utf-8">
   <title>Каталог товаров</title>
 
   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
@@ -8,7 +9,16 @@
   <link rel="stylesheet" href="/resources/core/index.css">
 
   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-  <jsp:useBean id="teamDto" scope="request" type="java.util.List<ua.com.pb.showcase.dao.entity.Product>"/>
+  <jsp:useBean id="category" scope="request" type="java.util.List<ua.com.pb.showcase.dao.entity.Category>"/>
+  <jsp:useBean id="producer" scope="request" type="java.util.List<ua.com.pb.showcase.dao.entity.Producer>"/>
+
+
+<%--
+  <jsp:useBean id="category" scope="request" type="java.util.List<ua.com.pb.showcase.dao.entity.Category>"/>
+  <jsp:useBean id="main-category" scope="request" type="java.util.List<ua.com.pb.showcase.dao.entity.MainCategory>"/>
+  <jsp:useBean id="producer" scope="request" type="java.util.List<ua.com.pb.showcase.dao.entity.Producer>"/>
+--%>
+
 
 
 </head>
@@ -19,6 +29,21 @@
       <div class="sidebar">
         <!--Sidebar content-->
         <p>Hello from sidebar</p>
+        <select class="categories">
+          <option class="default">Select category</option>
+          <c:forEach items="${category}" var="category">
+            <option class="${category.id}">${category.name}</option>
+          </c:forEach>
+        </select>
+        <p></p>
+        <select class="producers">
+          <option class="default">Select producer</option>
+          <c:forEach items="${producer}" var="producer">
+            <option class="${producer.id}">${producer.name}</option>
+          </c:forEach>
+        </select>
+
+
       </div>
       <div class="body">
         <!--Body content-->
@@ -28,8 +53,8 @@
           <tr>
             <th>Название</th>
             <th>Производитель</th>
+            <th>Подкатегория</th>
             <th>Категория</th>
-            <th>Основная категория</th>
             <th>Описание</th>
             <th>Цена</th>
             <th>Наличие</th>

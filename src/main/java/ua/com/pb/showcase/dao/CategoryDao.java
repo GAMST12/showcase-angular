@@ -4,6 +4,7 @@ import ua.com.pb.showcase.dao.entity.Category;
 
 import java.util.List;
 
+
 public interface CategoryDao {
     List<Category> findAll();
     Category findById(long id);

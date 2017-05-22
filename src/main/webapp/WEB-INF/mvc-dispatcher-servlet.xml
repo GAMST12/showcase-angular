@@ -33,6 +33,10 @@
        <bean id="mainCategoryDao" class="ua.com.pb.showcase.dao.impl.JdbcMainCategoryDaoImpl" scope="singleton">
               <property name="dataSource" ref="dataSource"/>
        </bean>
+       <bean id="categoryDao" class="ua.com.pb.showcase.dao.impl.JdbcCategoryDaoImpl" scope="singleton">
+              <property name="dataSource" ref="dataSource"/>
+       </bean>
+
 
        <mvc:resources mapping="/resources/**" location="/resources/" />
 
