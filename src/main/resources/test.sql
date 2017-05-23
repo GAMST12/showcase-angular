@@ -121,6 +121,9 @@ insert into Producer (pdc_producer)
 select	'Samsung';
 insert into Producer (pdc_producer)
 select	'Electrolux';
+insert into Producer (pdc_producer)
+select	'Xiaomi';
+
 
 
 insert into Product (prd_name, prd_producer_id, prd_category_id, prd_description, prd_price, prd_fl_availability)
@@ -131,3 +134,9 @@ insert into Product (prd_name, prd_producer_id, prd_category_id, prd_description
 select 'TV Samsung C32', 3, 6, '32, 3D, FullHD', 12000.00, 1;
 insert into Product (prd_name, prd_producer_id, prd_category_id, prd_description, prd_price, prd_fl_availability)
 select 'Home Cinema Samsung ABC', 3, 6, '54, 3D, FullHD', 120000.00, 1;
+insert into Product (prd_name, prd_producer_id, prd_category_id, prd_description, prd_price, prd_fl_availability)
+select 'Washing machines Electrolux WC80', 4, 2, '6 kg, 1000', 8000.00, 0;
+insert into Product (prd_name, prd_producer_id, prd_category_id, prd_description, prd_price, prd_fl_availability)
+select 'Smartphone Xiaomi Redmi Note 3 Pro', 5, 8, '5.5, 3 Gb RAM, 32 Gb, FullHD', 5500.00, 0;
+
+

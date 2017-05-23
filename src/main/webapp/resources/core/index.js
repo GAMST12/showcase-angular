@@ -1,29 +1,39 @@
 $(document).ready(function() {
     $('#select-category').change(function() {
+        filterChange();
+    });
+    $('#select-producer').change(function() {
+        filterChange();
+    });
+    $('#price-from').focusout(function() {
+        filterChange();
+    });
+    $('#price-to').focusout(function() {
+        filterChange();
+    });
+    $('#only-available').change(function() {
+        filterChange();
+    });
 
-        var categories = new Array();
+
+
+
+
+    var filterChange = function() {
+        var category;
     if ($("#select-category option:selected").attr("id") === "all") {
-        $("#select-category option").each(function(){
-            if ($(this).attr("id") !== "all") {
-                categories.push($(this).attr("id"));
-            }
-        });
-    } else {
-        categories.push($("#select-category option:selected").attr("id"));
-    }
-        console.log(categories);
+        category = 0;
+    } else category = $("#select-category option:selected").attr("id");
 
-        var producers = new Array();
+        console.log(category);
+
+        var producer;
         if ($("#select-producer option:selected").attr("id") === "all") {
-            $("#select-producer option").each(function(){
-                if ($(this).attr("id") !== "all") {
-                    producers.push($(this).attr("id"));
-                }
-            });
+            producer = 0;
         } else {
-            producers.push($("#select-producer option:selected").attr("id"));
+            producer = $("#select-producer option:selected").attr("id");
         }
-        console.log(producers);
+        console.log(producer);
 
         var priceFrom;
         var priceTo;
@@ -34,17 +44,11 @@ $(document).ready(function() {
             priceTo = 99999999;
         } else priceTo = $("#price-to").val();
 
-        var availabilities = new Array();
-        if ($("#only-available").is(':checked') == true) {
-            availabilities.push(true);
-        } else {
-            availabilities.push(true);
-            availabilities.push(false);
-        }
+        var onlyAvailable = $("#only-available").is(':checked');
 
         console.log(priceFrom);
         console.log(priceTo);
-        console.log(availabilities)
+        console.log(onlyAvailable);
 
 
                         $.ajax({
@@ -56,24 +60,26 @@ $(document).ready(function() {
                             url: "/filterproducts",
                             contentType: "application/json;charset=utf-8",
                             dataType: "json",
-/*
-                            data: JSON.stringify({categoriesId: categories, producersId: producers, priceFrom: priceFrom, priceTo: priceTo, availabilities: availabilities}),
-*/
-                            data: JSON.stringify({priceFrom: priceFrom, priceTo: priceTo}),
-                            success: function (data) {
-                                console.log(data);
-/*
-                                if (data.status === "OK") {
-                                    alert("Successfully added");
-                                } else {
-                                    alert("Adding failed");
+                            data: JSON.stringify({categoryId: category, producerId: producer, priceFrom: priceFrom, priceTo: priceTo, onlyAvailable: onlyAvailable}),
+                            success: function (products) {
+                                console.log(products);
+                                $(".table tbody tr").remove();
+                                if (products != null) {
+                                    $.each(products, function(){
+                                        console.log(this.producer.name);
+                                        var isAvailable;
+                                        if (this.available) {
+                                            isAvailable = 'Yes';
+                                        } else isAvailable = 'No';
+                                        $(".table").append('<tr><td>'+this.name+'</td><td>'+this.producer.name+'</td><td>'+this.category.name+'</td><td>'+this.category.mainCategory.name+'</td><td>' +this.description+ '</td><td>'+this.price+'</td><td>'+ isAvailable +'</td></tr>');
+                                    });
+
                                 }
-*/
                             },
                             error: function(){
                                 alert("ERROR!");
                             }
                         });
                         return false;
-    });
+    };
 });

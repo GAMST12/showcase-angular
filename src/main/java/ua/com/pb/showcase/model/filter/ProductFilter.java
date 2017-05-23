@@ -6,46 +6,26 @@ import java.util.Arrays;
 import java.util.List;
 
 public class ProductFilter {
+    private long categoryId;
+    private long producerId;
     private BigDecimal priceFrom = BigDecimal.valueOf(0.0);
     private BigDecimal priceTo = BigDecimal.valueOf(Double.MAX_VALUE);
+    private boolean onlyAvailable = false;
 
-    public BigDecimal getPriceFrom() {
-        return priceFrom;
+    public long getCategoryId() {
+        return categoryId;
     }
 
-    public void setPriceFrom(BigDecimal priceFrom) {
-        this.priceFrom = priceFrom;
+    public void setCategoryId(long categoryId) {
+        this.categoryId = categoryId;
     }
 
-    public BigDecimal getPriceTo() {
-        return priceTo;
+    public long getProducerId() {
+        return producerId;
     }
 
-    public void setPriceTo(BigDecimal priceTo) {
-        this.priceTo = priceTo;
-    }
-
-/*
-    private List<String> categoriesId;
-    private List<String> producersId;
-    private BigDecimal priceFrom = BigDecimal.valueOf(0.0);
-    private BigDecimal priceTo = BigDecimal.valueOf(Double.MAX_VALUE);
-    private List<Boolean> availabilities = Arrays.asList(Boolean.FALSE, Boolean.TRUE);
-
-    public List<String> getCategoriesId() {
-        return categoriesId;
-    }
-
-    public void setCategoriesId(List<String> categoriesId) {
-        this.categoriesId = categoriesId;
-    }
-
-    public List<String> getProducersId() {
-        return producersId;
-    }
-
-    public void setProducersId(List<String> producersId) {
-        this.producersId = producersId;
+    public void setProducerId(long producerId) {
+        this.producerId = producerId;
     }
 
     public BigDecimal getPriceFrom() {
@@ -64,12 +44,22 @@ public class ProductFilter {
         this.priceTo = priceTo;
     }
 
-    public List<Boolean> getAvailabilities() {
-        return availabilities;
+    public boolean isOnlyAvailable() {
+        return onlyAvailable;
     }
 
-    public void setAvailabilities(List<Boolean> availabilities) {
-        this.availabilities = availabilities;
+    public void setOnlyAvailable(boolean onlyAvailable) {
+        this.onlyAvailable = onlyAvailable;
     }
-*/
+
+    @Override
+    public String toString() {
+        return "ProductFilter{" +
+                "categoryId=" + categoryId +
+                ", producerId=" + producerId +
+                ", priceFrom=" + priceFrom +
+                ", priceTo=" + priceTo +
+                ", onlyAvailable=" + onlyAvailable +
+                '}';
+    }
 }

@@ -231,28 +231,31 @@ public class ProductDaoImpl implements ProductDao {
 
     @Override
     public List<Product> findByFilter(ProductFilter productFilter) {
-        String sql = "select prd_product_id, prd_name, pdc_producer_id, pdc_producer, ctg_category_id, ctg_category, " +
+        StringBuilder sqlBuilder = new StringBuilder().append("select prd_product_id, prd_name, pdc_producer_id, pdc_producer, ctg_category_id, ctg_category, " +
                 "mnc_mcategory_id, mnc_mcategory, prd_description, prd_price, prd_fl_availability " +
                 "from Product, Producer, Category, Main_category " +
                 "where prd_category_id = ctg_category_id " +
                 "and prd_producer_id = pdc_producer_id " +
                 "and ctg_mcategory_id = mnc_mcategory_id " +
-                "and ctg_category_id in (?) " +
-                "and pdc_producer_id in (?) " +
-                "and price >= ? " +
-                "and price <= ? " +
-                "and available in (?)";
+                "and prd_price >= " + productFilter.getPriceFrom() + " " +
+                "and prd_price <= " + productFilter.getPriceTo() + " ");
+
+        if (productFilter.getCategoryId() != 0) {
+            sqlBuilder.append("and ctg_category_id  = " + productFilter.getCategoryId() + " ");
+        }
+        if (productFilter.getProducerId() != 0) {
+            sqlBuilder.append("and pdc_producer_id  = " + productFilter.getProducerId() + " ");
+        }
+        if (productFilter.isOnlyAvailable()) {
+            sqlBuilder.append("and prd_fl_availability  = true ");
+        }
+
+        System.out.println(sqlBuilder.toString());
 
         List<Product> products = new ArrayList<>();
-/*
         try (Connection conn = dataSource.getConnection();
-             PreparedStatement pst = conn.prepareStatement(sql);){
-            pst.setArray(1, (Array) productFilter.getCategoriesId());
-            pst.setArray(2, (Array) productFilter.getProducersId());
-            pst.setBigDecimal(3, productFilter.getPriceFrom());
-            pst.setBigDecimal(4, productFilter.getPriceTo());
-            pst.setArray(5, (Array) productFilter.getAvailabilities());
-            try (ResultSet rs = pst.executeQuery();){
+             Statement st = conn.createStatement();){
+            try (ResultSet rs = st.executeQuery(sqlBuilder.toString());){
                 while (rs.next()) {
                     Product product = new Product();
                     Producer producer = new Producer();
@@ -277,9 +280,9 @@ public class ProductDaoImpl implements ProductDao {
                 }
             }
         } catch (SQLException e) {
+            System.out.println(e);
             e.printStackTrace();
         }
-*/
         return products;
 
     }

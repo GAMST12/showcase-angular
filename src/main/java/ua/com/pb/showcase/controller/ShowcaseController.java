@@ -8,16 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import ua.com.pb.showcase.dao.CategoryDao;
-import ua.com.pb.showcase.dao.MainCategoryDao;
 import ua.com.pb.showcase.dao.ProducerDao;
-import ua.com.pb.showcase.dao.ProductDao;
-import ua.com.pb.showcase.dao.entity.Category;
-import ua.com.pb.showcase.dao.entity.Producer;
 import ua.com.pb.showcase.dao.entity.Product;
 import ua.com.pb.showcase.model.filter.ProductFilter;
 import ua.com.pb.showcase.service.ShowcaseService;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -42,12 +39,9 @@ public class ShowcaseController {
     }
 
     @RequestMapping(value = "/filterproducts", method = RequestMethod.POST)
-    @ResponseBody
-    public String getProductsByFilter(@RequestBody ProductFilter productFilter, HttpServletRequest request) {
-        System.out.println(productFilter);
-        //model.addAttribute("product", showcaseService.getProductsByFilter(productFilter));
-        //System.out.println(model.toString());
-        return "ok";
+    public @ResponseBody List<Product> getProductsByFilter(@RequestBody ProductFilter productFilter, HttpServletRequest request) {
+        List<Product> products = showcaseService.getProductsByFilter(productFilter);
+        return products;
     }
 
 
