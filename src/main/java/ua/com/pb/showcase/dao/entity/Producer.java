@@ -1,5 +1,9 @@
 package ua.com.pb.showcase.dao.entity;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "producer")
 public class Producer {
     private long id;
     private String name;
@@ -20,6 +24,7 @@ public class Producer {
         return id;
     }
 
+    @XmlElement
     public void setId(long id) {
         this.id = id;
     }
@@ -28,6 +33,7 @@ public class Producer {
         return name;
     }
 
+    @XmlElement
     public void setName(String name) {
         this.name = name;
     }

@@ -1,5 +1,9 @@
 package ua.com.pb.showcase.dao.entity;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement(name = "category")
 public class Category {
     private long id;
     private String name;
@@ -23,6 +27,7 @@ public class Category {
         return id;
     }
 
+    @XmlElement
     public void setId(long id) {
         this.id = id;
     }
@@ -31,6 +36,7 @@ public class Category {
         return name;
     }
 
+    @XmlElement
     public void setName(String name) {
         this.name = name;
     }
@@ -39,6 +45,7 @@ public class Category {
         return mainCategory;
     }
 
+    @XmlElement
     public void setMainCategory(MainCategory mainCategory) {
         this.mainCategory = mainCategory;
     }

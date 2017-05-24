@@ -1,7 +1,10 @@
 package ua.com.pb.showcase.dao.entity;
 
+import javax.xml.bind.annotation.XmlElement;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.math.BigDecimal;
 
+@XmlRootElement(name = "product")
 public class Product {
 
     private long id;
@@ -38,6 +41,7 @@ public class Product {
         return id;
     }
 
+    @XmlElement
     public void setId(long id) {
         this.id = id;
     }
@@ -46,6 +50,7 @@ public class Product {
         return name;
     }
 
+    @XmlElement
     public void setName(String name) {
         this.name = name;
     }
@@ -54,6 +59,7 @@ public class Product {
         return producer;
     }
 
+    @XmlElement
     public void setProducer(Producer producer) {
         this.producer = producer;
     }
@@ -62,6 +68,7 @@ public class Product {
         return category;
     }
 
+    @XmlElement
     public void setCategory(Category category) {
         this.category = category;
     }
@@ -70,6 +77,7 @@ public class Product {
         return description;
     }
 
+    @XmlElement
     public void setDescription(String description) {
         this.description = description;
     }
@@ -78,6 +86,7 @@ public class Product {
         return price;
     }
 
+    @XmlElement
     public void setPrice(BigDecimal price) {
         this.price = price;
     }
@@ -86,6 +95,7 @@ public class Product {
         return available;
     }
 
+    @XmlElement
     public void setAvailable(boolean available) {
         this.available = available;
     }

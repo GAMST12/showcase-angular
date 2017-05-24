@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>Каталог товаров</title>
+  <title>List of products</title>
 
   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
   <link rel='stylesheet' href='webjars/bootstrap/3.2.0/css/bootstrap.min.css'>
@@ -16,11 +16,14 @@
 
 </head>
 <body>
-<h1>Каталог товаров</h1>
+<h1 class = "center">List of products</h1>
   <div class="container-fluid">
     <div class="row-fluid">
       <div class="sidebar">
         <!--Sidebar content-->
+        <div class="col-xs-9">
+          <label id="filter" class="center">Filter</label>
+        </div>
         <form id="filter-form" class="form-vertical">
           <div class="form-group">
             <div class="col-xs-9">
@@ -63,13 +66,13 @@
         <table class="table table-hover">
           <thead>
           <tr>
-            <th>Название</th>
-            <th>Производитель</th>
-            <th>Подкатегория</th>
-            <th>Категория</th>
-            <th>Описание</th>
-            <th>Цена</th>
-            <th>Наличие</th>
+            <th>Name</th>
+            <th>Producer</th>
+            <th>Category</th>
+            <th>Main category</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Available</th>
           </tr>
           </thead>
           <tbody>

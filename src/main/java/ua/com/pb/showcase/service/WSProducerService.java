@@ -13,5 +13,5 @@ public interface WSProducerService {
 
     int updateProducer(Producer producer);
 
-    int deleteUserById(long id);
+    int deleteProducerById(long id);
 }

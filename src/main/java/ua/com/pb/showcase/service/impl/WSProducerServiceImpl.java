@@ -34,7 +34,7 @@ public class WSProducerServiceImpl implements WSProducerService{
     }
 
     @Override
-    public int deleteUserById(long id) {
+    public int deleteProducerById(long id) {
         return producerDao.delete(id);
     }
 }

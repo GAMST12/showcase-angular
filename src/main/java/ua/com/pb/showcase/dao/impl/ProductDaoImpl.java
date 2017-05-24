@@ -250,8 +250,6 @@ public class ProductDaoImpl implements ProductDao {
             sqlBuilder.append("and prd_fl_availability  = true ");
         }
 
-        System.out.println(sqlBuilder.toString());
-
         List<Product> products = new ArrayList<>();
         try (Connection conn = dataSource.getConnection();
              Statement st = conn.createStatement();){
@@ -375,7 +373,7 @@ public class ProductDaoImpl implements ProductDao {
              PreparedStatement pst = conn.prepareStatement(sql);){
             pst.setString(1, product.getName());
             pst.setLong(2, product.getProducer().getId());
-            pst.setLong(3, product.getProducer().getId());
+            pst.setLong(3, product.getCategory().getId());
             pst.setString(4, product.getDescription());
             pst.setBigDecimal(5, product.getPrice());
             pst.setBoolean(6, product.isAvailable());

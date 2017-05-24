@@ -3,21 +3,22 @@ package ua.com.pb.showcase.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 import ua.com.pb.showcase.dao.entity.Producer;
 import ua.com.pb.showcase.service.WSProducerService;
+
+import javax.ws.rs.core.MediaType;
 import java.util.List;
 
 @RestController
-public class ProducerRestController {
+public class ProducerXMLRestController {
     @Autowired
     private WSProducerService wsProducerService;
 
 
-    @RequestMapping(value = "/producer/", method = RequestMethod.GET)
+    @RequestMapping(value = "/xmlproducer/", method = RequestMethod.GET,  produces = MediaType.APPLICATION_XML)
     public ResponseEntity<List<Producer>> getAllProducers() {
         List<Producer> producers = wsProducerService.getAllProducers();
         if (producers.isEmpty()) {
@@ -26,7 +27,7 @@ public class ProducerRestController {
         return new ResponseEntity<>(producers, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/producer/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/xmlproducer/{id}", method = RequestMethod.GET, produces = MediaType.APPLICATION_XML)
     public ResponseEntity<Producer> getProducer(@PathVariable("id") long id) {
         Producer producer = wsProducerService.getProducer(id);
         if (producer == null) {
@@ -35,7 +36,7 @@ public class ProducerRestController {
         return new ResponseEntity<>(producer, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/producer/", method = RequestMethod.POST)
+    @RequestMapping(value = "/xmlproducer/", method = RequestMethod.POST, consumes = MediaType.APPLICATION_XML)
     public ResponseEntity<Void> addProducer(@RequestBody Producer producer, UriComponentsBuilder ucBuilder) {
         if (false) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
@@ -46,7 +47,7 @@ public class ProducerRestController {
         return new ResponseEntity<>(headers, HttpStatus.CREATED);
     }
 
-    @RequestMapping(value = "/producer/{id}", method = RequestMethod.PUT)
+    @RequestMapping(value = "/xmlproducer/{id}", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_XML)
     public ResponseEntity<Producer> updateProducer(@PathVariable("id") long id, @RequestBody Producer producer) {
         Producer currentProducer = wsProducerService.getProducer(id);
         if (currentProducer==null) {
@@ -59,7 +60,7 @@ public class ProducerRestController {
     }
 
 
-    @RequestMapping(value = "/producer/{id}", method = RequestMethod.DELETE)
+    @RequestMapping(value = "/xmlproducer/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<Void> deleteProducer(@PathVariable("id") long id) {
         Producer producer = wsProducerService.getProducer(id);
         if (producer == null) {
@@ -69,4 +70,5 @@ public class ProducerRestController {
         wsProducerService.deleteProducerById(id);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
 }
