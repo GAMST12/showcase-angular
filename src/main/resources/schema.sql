@@ -1,21 +1,10 @@
 
-DROP TABLE IF EXISTS User;
 DROP TABLE IF EXISTS Main_Category;
 DROP TABLE IF EXISTS Category;
 DROP TABLE IF EXISTS Producer;
 DROP TABLE IF EXISTS Product;
 
 
-CREATE TABLE IF NOT EXISTS User (
-	usr_user_id INT NOT NULL AUTO_INCREMENT,
-	usr_login VARCHAR(50) NOT NULL, 
-  usr_role VARCHAR(1) NOT NULL default 'U',
-  usr_email VARCHAR(256) NOT NULL,
-  usr_password VARCHAR(256) NOT NULL,
-  usr_login_dte DATETIME NOT NULL,
-  	PRIMARY KEY (usr_user_id),
-    UNIQUE UQ_USR_LOGIN (usr_login)
-);
 
 
 CREATE TABLE IF NOT EXISTS Main_Category (

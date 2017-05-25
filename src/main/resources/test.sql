@@ -1,13 +1,5 @@
 
 
-insert into User (usr_login, usr_role, usr_email, usr_password, usr_login_dte)
-select	'GAMST', 'U', 'gamst9@gmail.com', 'qwerty', '2017-05-01';
-
-
-insert into User (usr_login, usr_role, usr_email, usr_password, usr_login_dte)
-select	'admin', 'A', 'admin@pbank.com.ua', 'admin', '2017-01-01';
-
-
 /*
 insert into Main_Category (mnc_mcategory)
 select	'Крупная бытовая техника';
