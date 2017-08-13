@@ -18,7 +18,7 @@ public class CategoryRestController {
     private WSCategoryService wsCategoryService;
 
 
-    @RequestMapping(value = "/category/", method = RequestMethod.GET)
+    @RequestMapping(value = "/category", method = RequestMethod.GET)
     public ResponseEntity<List<Category>> getAllCategories() {
         List<Category> categories = wsCategoryService.getAllCategories();
         if (categories.isEmpty()) {
@@ -36,14 +36,14 @@ public class CategoryRestController {
         return new ResponseEntity<>(category, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/category/", method = RequestMethod.POST)
+    @RequestMapping(value = "/category", method = RequestMethod.POST)
     public ResponseEntity<Void> addCategory(@RequestBody Category category, UriComponentsBuilder ucBuilder) {
         if (false) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
         }
         wsCategoryService.addCategory(category);
         HttpHeaders headers = new HttpHeaders();
-        headers.setLocation(ucBuilder.path("/producer/{id}").buildAndExpand(category.getId()).toUri());
+        headers.setLocation(ucBuilder.path("/category/{id}").buildAndExpand(category.getId()).toUri());
         return new ResponseEntity<>(headers, HttpStatus.CREATED);
     }
 

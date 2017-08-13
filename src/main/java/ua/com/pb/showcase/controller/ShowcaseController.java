@@ -29,21 +29,10 @@ public class ShowcaseController {
     private ShowcaseService showcaseService;
 
 
-
-
-    @RequestMapping(value = "/index", method = RequestMethod.GET)
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index(Model model, HttpServletRequest request) {
         model.addAttribute("category", categoryDao.findAll());
-        model.addAttribute("producer", producerDao.findAll());
         return "/index";
     }
-
-    @RequestMapping(value = "/filterproducts", method = RequestMethod.POST)
-    public @ResponseBody List<Product> getProductsByFilter(@RequestBody ProductFilter productFilter, HttpServletRequest request) {
-        List<Product> products = showcaseService.getProductsByFilter(productFilter);
-        return products;
-    }
-
-
 
 }
