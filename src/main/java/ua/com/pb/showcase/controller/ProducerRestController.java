@@ -17,7 +17,7 @@ public class ProducerRestController {
     private WSProducerService wsProducerService;
 
 
-    @RequestMapping(value = "/producer/", method = RequestMethod.GET)
+    @RequestMapping(value = "/producer", method = RequestMethod.GET)
     public ResponseEntity<List<Producer>> getAllProducers() {
         List<Producer> producers = wsProducerService.getAllProducers();
         if (producers.isEmpty()) {
@@ -35,7 +35,7 @@ public class ProducerRestController {
         return new ResponseEntity<>(producer, HttpStatus.OK);
     }
 
-    @RequestMapping(value = "/producer/", method = RequestMethod.POST)
+    @RequestMapping(value = "/producer", method = RequestMethod.POST)
     public ResponseEntity<Void> addProducer(@RequestBody Producer producer, UriComponentsBuilder ucBuilder) {
         if (false) {
             return new ResponseEntity<>(HttpStatus.CONFLICT);
@@ -53,6 +53,7 @@ public class ProducerRestController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         currentProducer.setName(producer.getName());
+        currentProducer.setAddress(producer.getAddress());
 
         wsProducerService.updateProducer(currentProducer);
         return new ResponseEntity<>(currentProducer, HttpStatus.OK);

@@ -13,6 +13,7 @@ public class ProducerRowMapper implements RowMapper {
         Producer producer = new Producer();
         producer.setId(resultSet.getLong("pdc_producer_id"));
         producer.setName(resultSet.getString("pdc_producer"));
+        producer.setAddress(resultSet.getString("pdc_address"));
         return producer;
     }
 }

@@ -19,7 +19,7 @@ public class JdbcProducerDaoImpl extends JdbcDaoSupport implements ProducerDao{
 
     @Override
     public List<Producer> findAll() {
-        String sql = "select pdc_producer_id, pdc_producer from Producer";
+        String sql = "select pdc_producer_id, pdc_producer, pdc_address from Producer";
 
         List<Producer> producers = new ArrayList<>();
         List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
@@ -27,6 +27,7 @@ public class JdbcProducerDaoImpl extends JdbcDaoSupport implements ProducerDao{
             Producer producer = new Producer();
             producer.setId(Integer.parseInt(String.valueOf(row.get("pdc_producer_id"))));
             producer.setName((String) row.get("pdc_producer"));
+            producer.setAddress((String) row.get("pdc_address"));
             producers.add(producer);
         }
         return producers;
@@ -34,7 +35,7 @@ public class JdbcProducerDaoImpl extends JdbcDaoSupport implements ProducerDao{
 
     @Override
     public Producer findById(long id) {
-        String sql = "select pdc_producer_id, pdc_producer from Producer where pdc_producer_id = ?";
+        String sql = "select pdc_producer_id, pdc_producer, pdc_address from Producer where pdc_producer_id = ?";
 
         Producer producer = (Producer)getJdbcTemplate().queryForObject(
                 sql, new Object[] { id }, new ProducerRowMapper());
@@ -43,7 +44,7 @@ public class JdbcProducerDaoImpl extends JdbcDaoSupport implements ProducerDao{
 
     @Override
     public Producer findByName(String name) {
-        String sql = "select pdc_producer_id, pdc_producer from Producer where pdc_producer = ?";
+        String sql = "select pdc_producer_id, pdc_producer, pdc_address from Producer where pdc_producer = ?";
 
         Producer producer = (Producer)getJdbcTemplate().queryForObject(
                 sql, new Object[] { name }, new ProducerRowMapper());
@@ -59,6 +60,7 @@ public class JdbcProducerDaoImpl extends JdbcDaoSupport implements ProducerDao{
                 "pdc_producer_id");
         Map<String, Object> parameters = new HashMap<>();
         parameters.put("pdc_producer", producer.getName());
+        parameters.put("pdc_address", producer.getAddress());
         Number key = jdbcInsert.executeAndReturnKey(new MapSqlParameterSource(
                 parameters));
         return key.longValue();
@@ -67,8 +69,8 @@ public class JdbcProducerDaoImpl extends JdbcDaoSupport implements ProducerDao{
 
     @Override
     public int update(Producer producer) {
-        String sql = "update Producer set pdc_producer = ? where pdc_producer_id = ?";
-        return getJdbcTemplate().update(sql, new Object[]{producer.getName(), producer.getId()});
+        String sql = "update Producer set pdc_producer = ?, pdc_address = ? where pdc_producer_id = ?";
+        return getJdbcTemplate().update(sql, new Object[]{producer.getName(), producer.getAddress(), producer.getId()});
     }
 
     @Override

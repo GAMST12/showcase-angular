@@ -92,6 +92,7 @@ public class JdbcCategoryDaoImpl extends JdbcDaoSupport implements CategoryDao {
         parameters.put("ctg_mcategory_id", category.getMainCategory().getId());
         Number key = jdbcInsert.executeAndReturnKey(new MapSqlParameterSource(
                 parameters));
+        System.out.println(key.longValue());
         return key.longValue();
 
     }

@@ -7,6 +7,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Producer {
     private long id;
     private String name;
+    private String address;
 
     public Producer() {}
 
@@ -38,23 +39,32 @@ public class Producer {
         this.name = name;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    @XmlElement
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Producer producer1 = (Producer) o;
+        Producer producer = (Producer) o;
 
-        if (id != producer1.id) return false;
-        if (!name.equals(producer1.name)) return false;
-
-        return true;
+        if (id != producer.id) return false;
+        if (name != null ? !name.equals(producer.name) : producer.name != null) return false;
+        return address != null ? address.equals(producer.address) : producer.address == null;
     }
 
     @Override
     public int hashCode() {
         int result = (int) (id ^ (id >>> 32));
-        result = 31 * result + name.hashCode();
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (address != null ? address.hashCode() : 0);
         return result;
     }
 
@@ -63,6 +73,7 @@ public class Producer {
         return "Producer{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", address='" + address + '\'' +
                 '}';
     }
 }

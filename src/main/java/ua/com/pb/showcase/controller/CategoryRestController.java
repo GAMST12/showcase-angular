@@ -44,6 +44,7 @@ public class CategoryRestController {
         wsCategoryService.addCategory(category);
         HttpHeaders headers = new HttpHeaders();
         headers.setLocation(ucBuilder.path("/category/{id}").buildAndExpand(category.getId()).toUri());
+        System.out.println("created " + category);
         return new ResponseEntity<>(headers, HttpStatus.CREATED);
     }
 
@@ -56,6 +57,7 @@ public class CategoryRestController {
         currentCategory.setName(category.getName());
 
         wsCategoryService.updateCategory(currentCategory);
+        System.out.println("updated " + currentCategory);
         return new ResponseEntity<>(currentCategory, HttpStatus.OK);
     }
 

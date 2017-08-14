@@ -105,16 +105,16 @@ select	'Headphones', 6;
 insert into Category (ctg_category, ctg_mcategory_id)
 select	'USB-storage devices', 5;
 
-insert into Producer (pdc_producer)
-select	'LG';
-insert into Producer (pdc_producer)
-select	'Sony';
-insert into Producer (pdc_producer)
-select	'Samsung';
-insert into Producer (pdc_producer)
-select	'Electrolux';
-insert into Producer (pdc_producer)
-select	'Xiaomi';
+insert into Producer (pdc_producer, pdc_address)
+select	'LG', 'Korea';
+insert into Producer (pdc_producer, pdc_address)
+select	'Sony', 'Japan';
+insert into Producer (pdc_producer, pdc_address)
+select	'Samsung', 'Japan';
+insert into Producer (pdc_producer, pdc_address)
+select	'Electrolux', 'Slovenia';
+insert into Producer (pdc_producer, pdc_address)
+select	'Xiaomi', 'China';
 
 
 

@@ -26,7 +26,8 @@ CREATE TABLE IF NOT EXISTS Category (
 CREATE TABLE IF NOT EXISTS Producer (
 	pdc_producer_id INT NOT NULL AUTO_INCREMENT,
 	pdc_producer VARCHAR(128) NOT NULL,
-	  PRIMARY KEY (pdc_producer_id),
+	pdc_address VARCHAR(128) NOT NULL,
+  PRIMARY KEY (pdc_producer_id),
 	  UNIQUE UQ_PDC_PRODUCER (pdc_producer)
 );
 
@@ -40,6 +41,5 @@ CREATE TABLE IF NOT EXISTS Product (
   prd_price NUMERIC(15,2) NOT NULL DEFAULT 0.0,
   prd_fl_availability BIT(1) NOT NULL DEFAULT 0,
 	  PRIMARY KEY (prd_product_id),
-    CONSTRAINT FK_PRODUCT_PRODUCER FOREIGN KEY (prd_producer_id) REFERENCES Producer(pdc_producer_id),
     CONSTRAINT FK_PRODUCT_CATEGORY FOREIGN KEY (prd_category_id) REFERENCES Category(ctg_category_id)
 );
